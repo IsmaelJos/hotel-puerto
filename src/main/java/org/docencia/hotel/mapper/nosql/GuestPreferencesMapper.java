@@ -6,6 +6,8 @@ import org.docencia.hotel.persistence.nosql.document.GuestPreferencesDocument;
 
 @Mapper(componentModel = "spring")
 public interface GuestPreferencesMapper {
+
     GuestPreferencesDocument toDocument(GuestPreferences domain);
+
     GuestPreferences toDomain(GuestPreferencesDocument doc);
 }

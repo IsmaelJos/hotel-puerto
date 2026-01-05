@@ -3,9 +3,22 @@ package org.docencia.hotel.mapper.jpa;
 import org.mapstruct.Mapper;
 import org.docencia.hotel.domain.model.Room;
 import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
+import org.mapstruct.Mapping;
+
+import java.util.Set;
 
 @Mapper(componentModel = "spring")
 public interface RoomMapper {
+
+    @Mapping(target = "hotel", source = "hotel")
+    @Mapping(target = "bookings", ignore = true)
     RoomEntity toEntity(Room domain);
+
+    @Mapping(target = "hotel", source = "hotel")
+    @Mapping(target = "bookings", ignore = true)
     Room toDomain(RoomEntity entity);
+
+    Set<Room> toDomain(Set<RoomEntity> bookings);
+
+    Set<RoomEntity> toEntity(Set<Room> bookings);
 }

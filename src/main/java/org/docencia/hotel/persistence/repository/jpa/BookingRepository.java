@@ -1,5 +1,21 @@
 package org.docencia.hotel.persistence.repository.jpa;
 
-public interface BookingRepository {
-    // TODO: contrato JPA
+import org.docencia.hotel.persistence.jpa.entity.BookingEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.Set;
+
+@Repository
+public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
+
+    @Query("SELECT b FROM BookingEntity as b WHERE b.room.id = :roomId " +
+            "AND b.checkOut > :checkIn AND b.checkIn < :checkOut")
+    Set<BookingEntity> findByRoomIdAndDateRange(
+            @Param("roomId") Long roomId,
+            @Param("checkIn") String checkIn,
+            @Param("checkOut") String checkOut
+    );
 }

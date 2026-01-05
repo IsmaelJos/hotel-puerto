@@ -1,9 +1,61 @@
 package org.docencia.hotel.service.impl;
 
+import jakarta.transaction.Transactional;
+import org.docencia.hotel.domain.model.Booking;
+import org.docencia.hotel.mapper.jpa.BookingMapper;
+import org.docencia.hotel.persistence.repository.jpa.BookingRepository;
 import org.docencia.hotel.service.api.BookingService;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+
 @Service
 public class BookingServiceImpl implements BookingService {
-    // TODO: inyectar repositorios + mappers y aplicar lógica
+    private final BookingRepository repository;
+    private final BookingMapper mapper;
+
+    public BookingServiceImpl(BookingRepository repository, BookingMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public Booking findById(Long id) {
+        return mapper.toDomain(repository.findById(id).orElse(null));
+    }
+
+    @Override
+    public Set<Booking> findAll() {
+        return mapper.toDomain(new HashSet<>(repository.findAll()));
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteById(Long id) {
+        if (!repository.existsById(id)) {
+            return false;
+        }
+        repository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public Booking save(Booking booking) {
+        if (booking.getId() == null) {
+            booking.setId(UUID.randomUUID().getLeastSignificantBits());
+        }
+        return mapper.toDomain(repository.save(mapper.toEntity(booking)));
+    }
+
+    @Override
+    public Booking findByRoomIdAndDateRange(Long roomId, String startDate, String endDate) {
+        List<Booking> bookings = new ArrayList<>( mapper.toDomain(repository.findByRoomIdAndDateRange(roomId, startDate, endDate)));
+        return bookings.get(0);
+    }
 }

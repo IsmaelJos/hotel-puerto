@@ -11,6 +11,14 @@ import org.docencia.hotel.web.soap.GuestSoapServiceImpl;
 @Configuration
 public class CxfConfig {
 
+    private final Bus bus;
+    private final ITareaSoapEndpoint tareaSoapEndpoint;
+
+    public CxfConfig(Bus bus, ITareaSoapEndpoint tareaSoapEndpoint) {
+        this.bus = bus;
+        this.tareaSoapEndpoint = tareaSoapEndpoint;
+    }
+    
     @Bean
     public Endpoint guestEndpoint(Bus bus, GuestSoapServiceImpl impl) {
         EndpointImpl endpoint = new EndpointImpl(bus, impl);
