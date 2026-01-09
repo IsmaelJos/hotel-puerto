@@ -28,29 +28,13 @@ public class RoomEntity {
     @OneToMany(mappedBy = "room")
     private Set<BookingEntity> bookings;
 
-    /**
-     * Constructor vacio de la clase RoomEntity
-     */
     public RoomEntity() {
     }
 
-    /**
-     * Constructor con el identificador de la clase RoomEntity
-     * @param id identificador de la habitacion
-     */
     public RoomEntity(Long id) {
         this.id = id;
     }
 
-    /**
-     * Constructor con los atributos de la clase RoomEntity
-     * @param id identificador de la habitacion
-     * @param number numero de la habitacion
-     * @param type tipo de habitacion
-     * @param pricePerNight precio por noche de la habitacion
-     * @param hotel hotel donde se encuentra la habitacion
-     * @param bookings reservas que tiene la habitacion
-     */
     public RoomEntity(Long id, String number, String type, float pricePerNight, HotelEntity hotel, Set<BookingEntity> bookings) {
         this.id = id;
         this.number = number;

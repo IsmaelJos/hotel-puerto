@@ -28,22 +28,9 @@ public class GuestPreferencesDocument {
     @Field("notes")
     private String notes;
 
-    /**
-     * Constructor vacio de la clase GuestPreferencesDocument
-     */
     public GuestPreferencesDocument() {
     }
 
-    /**
-     * Constructor con todos los atributos de la clase GuestPreferencesDocument
-     *
-     * @param guestId identificador de la clase GuestReference
-     * @param preferredLanguage leguaje de preferecia del guestEntity
-     * @param newsLetterOptIn si tiene preferencia a recibir el preiodico
-     * @param tags etiquetas del guest
-     * @param favoriteRoomType tipo de habitacion favorita del guest
-     * @param notes notas del guest
-     */
     public GuestPreferencesDocument(Long guestId, String preferredLanguage,
                                     boolean newsLetterOptIn, List<String> tags, String favoriteRoomType, String notes) {
 
@@ -55,11 +42,6 @@ public class GuestPreferencesDocument {
         this.notes = notes;
     }
 
-    /**
-     * Constructor con el identificardor de la clase GuestPreferencesDocument y del guestEntity
-     *
-     * @param guestId identificador del guestEntity
-     */
     public GuestPreferencesDocument(Long guestId) {
         this.guestId = guestId;
     }

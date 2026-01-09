@@ -27,30 +27,13 @@ public class BookingEntity {
     @Column(name = "check_out")
     private LocalDate checkOut;
 
-    /**
-     * Constructor vacio de la clase bookingEntity
-     */
     public BookingEntity() {
     }
 
-    /**
-     * Constructor con el identificador de la clase bookingEntity
-     *
-     * @param id
-     */
     public BookingEntity(Long id) {
         this.id = id;
     }
 
-    /**
-     * Constructor con todos los atributos de la clase bookingEntity
-     *
-     * @param id       identificador de la reserva
-     * @param room   identificador de la habitacion de la reserva
-     * @param guest  identificador de huesped de la reserva
-     * @param checkIn  fecha y hora de entrada de la reserva
-     * @param checkOut fecha y hora de salida de la reserva
-     */
     public BookingEntity(Long id, RoomEntity room, GuestEntity guest, LocalDate checkIn, LocalDate checkOut) {
         this.id = id;
         this.room = room;

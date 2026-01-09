@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Repository
@@ -15,7 +16,7 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Long> {
             "AND b.checkOut > :checkIn AND b.checkIn < :checkOut")
     Set<BookingEntity> findByRoomIdAndDateRange(
             @Param("roomId") Long roomId,
-            @Param("checkIn") String checkIn,
-            @Param("checkOut") String checkOut
+            @Param("checkIn") LocalDate checkIn,
+            @Param("checkOut") LocalDate checkOut
     );
 }

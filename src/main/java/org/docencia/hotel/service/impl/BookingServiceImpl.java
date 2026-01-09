@@ -7,6 +7,7 @@ import org.docencia.hotel.persistence.repository.jpa.BookingRepository;
 import org.docencia.hotel.service.api.BookingService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -54,7 +55,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public Booking findByRoomIdAndDateRange(Long roomId, String startDate, String endDate) {
+    public Booking findByRoomIdAndDateRange(Long roomId, LocalDate startDate, LocalDate endDate) {
         List<Booking> bookings = new ArrayList<>( mapper.toDomain(repository.findByRoomIdAndDateRange(roomId, startDate, endDate)));
         return bookings.get(0);
     }

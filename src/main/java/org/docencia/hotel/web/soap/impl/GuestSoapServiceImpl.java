@@ -1,9 +1,13 @@
-package org.docencia.hotel.web.soap;
+package org.docencia.hotel.web.soap.impl;
 
 import org.docencia.hotel.domain.api.GuestDomain;
 import org.docencia.hotel.domain.model.Guest;
 import jakarta.jws.WebService;
+import org.docencia.hotel.domain.model.GuestPreferences;
+import org.docencia.hotel.web.soap.GuestSoapService;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 @WebService(
@@ -22,11 +26,39 @@ public class GuestSoapServiceImpl implements GuestSoapService {
 
     @Override
     public Guest getGuestById(Long id) {
-        throw new UnsupportedOperationException("TODO");
+        return guestDomain.findById(id);
     }
 
     @Override
     public Guest saveGuest(Guest guest) {
-        throw new UnsupportedOperationException("TODO");
+        return  guestDomain.save(guest);
+    }
+
+    @Override
+    public Set<Guest> findAllGuests() {
+        return guestDomain.findAll();
+    }
+
+    @Override
+    public boolean deleteGuestById(Long id) {
+        return guestDomain.deleteById(id);
+    }
+
+    @Override
+    public GuestPreferences saveGuestPreferences(Long guestId, GuestPreferences preferences) {
+        if (!guestDomain.existsById(guestId)) {
+            return null;
+        }
+        return  guestDomain.savePreferences(guestId, preferences);
+    }
+
+    @Override
+    public boolean deletePreferenceById(Long guestId) {
+        return guestDomain.deletePreferenceById(guestId);
+    }
+
+    @Override
+    public GuestPreferences findPreferenceById(Long guestId) {
+        return guestDomain.findPreferenceById(guestId);
     }
 }

@@ -1,8 +1,12 @@
 package org.docencia.hotel.domain.impl;
 
 import org.docencia.hotel.domain.api.BookingDomain;
+import org.docencia.hotel.domain.model.Booking;
 import org.docencia.hotel.service.api.BookingService;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.Set;
 
 @Service
 public class BookingDomainImpl implements BookingDomain {
@@ -13,5 +17,33 @@ public class BookingDomainImpl implements BookingDomain {
         this.service = service;
     }
 
-    // TODO
+    @Override
+    public boolean existsById(Long id) {
+        return  service.existsById(id);
+    }
+
+    @Override
+    public Booking findById(Long id) {
+        return service.findById(id);
+    }
+
+    @Override
+    public Set<Booking> findAll() {
+        return  service.findAll();
+    }
+
+    @Override
+    public Booking save(Booking booking) {
+        return service.save(booking);
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        return service.deleteById(id);
+    }
+
+    @Override
+    public Booking findByRoomIdAndDateRange(Long roomId, LocalDate checkin, LocalDate checkout) {
+        return service.findByRoomIdAndDateRange(roomId, checkin, checkout);
+    }
 }

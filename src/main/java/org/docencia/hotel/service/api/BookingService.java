@@ -2,6 +2,7 @@ package org.docencia.hotel.service.api;
 
 import org.docencia.hotel.domain.model.Booking;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 public interface BookingService {
@@ -16,5 +17,5 @@ public interface BookingService {
 
     boolean deleteById(Long id);
 
-    Booking findByRoomIdAndDateRange(Long roomId, String checkin, String checkout);
+    Booking findByRoomIdAndDateRange(Long roomId, LocalDate checkin, LocalDate checkout);
 }

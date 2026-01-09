@@ -21,27 +21,13 @@ public class HotelEntity {
     @OneToMany(mappedBy = "hotel")
     private Set<RoomEntity> rooms;
 
-    /**
-     * Constructor vacio de la clase HotelEntity
-     */
     public HotelEntity() {
     }
 
-    /**
-     * Constructor con el identificador de la clase HotelEntity
-     * @param id iendtificador del hotel
-     */
     public HotelEntity(Long id) {
         this.id = id;
     }
 
-    /**
-     * Constructor con los atributos de la clase HotelEntity
-     * @param id identificador del hotel
-     * @param name nombre del hotel
-     * @param address direccion del hotel
-     * @param rooms habitaciones del hotel
-     */
     public HotelEntity(Long id, String name, String address, Set<RoomEntity> rooms) {
         this.id = id;
         this.name = name;

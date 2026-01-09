@@ -25,31 +25,13 @@ public class GuestEntity {
     @Transient
     private GuestPreferencesDocument preference;
 
-    /**
-     * Constructor vacio de la clase GuestEntity
-     */
     public GuestEntity() {
     }
 
-    /**
-     * Constructor con el identificador de la clase GuestEntity
-     *
-     * @param id identificador del huesped
-     */
     public GuestEntity(Long id) {
         this.id = id;
     }
 
-    /**
-     * Constructor con los atributos de la clase GuestEntity
-     *
-     * @param id         identificador del huesped
-     * @param fullName   nombre completo del huesped
-     * @param email      email del huesped
-     * @param phone      telefono del huesped
-     * @param bookings   reservas del huesped
-     * @param preference preferencias del huesped
-     */
     public GuestEntity(Long id, String fullName, String email, String phone, Set<BookingEntity> bookings, GuestPreferencesDocument preference) {
         this.id = id;
         this.fullName = fullName;
