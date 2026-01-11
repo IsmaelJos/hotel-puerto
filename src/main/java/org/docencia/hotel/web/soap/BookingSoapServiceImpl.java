@@ -1,9 +1,8 @@
-package org.docencia.hotel.web.soap.impl;
+package org.docencia.hotel.web.soap;
 
 import jakarta.jws.WebService;
 import org.docencia.hotel.domain.api.BookingDomain;
 import org.docencia.hotel.domain.model.Booking;
-import org.docencia.hotel.web.soap.BookingSoapService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

@@ -1,14 +1,18 @@
 package org.docencia.hotel.mapper.jpa;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.annotation.processing.Generated;
+import org.docencia.hotel.domain.model.Hotel;
 import org.docencia.hotel.domain.model.Room;
+import org.docencia.hotel.persistence.jpa.entity.HotelEntity;
 import org.docencia.hotel.persistence.jpa.entity.RoomEntity;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-12-24T10:29:15+0000",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.44.0.v20251118-1623, environment: Java 21.0.9 (Eclipse Adoptium)"
+    date = "2026-01-11T09:31:06+0000",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.17 (Ubuntu)"
 )
 @Component
 public class RoomMapperImpl implements RoomMapper {
@@ -21,6 +25,12 @@ public class RoomMapperImpl implements RoomMapper {
 
         RoomEntity roomEntity = new RoomEntity();
 
+        roomEntity.setHotel( hotelToHotelEntity( domain.getHotel() ) );
+        roomEntity.setId( domain.getId() );
+        roomEntity.setNumber( domain.getNumber() );
+        roomEntity.setType( domain.getType() );
+        roomEntity.setPricePerNight( domain.getPricePerNight() );
+
         return roomEntity;
     }
 
@@ -32,6 +42,70 @@ public class RoomMapperImpl implements RoomMapper {
 
         Room room = new Room();
 
+        room.setHotel( hotelEntityToHotel( entity.getHotel() ) );
+        room.setId( entity.getId() );
+        room.setNumber( entity.getNumber() );
+        room.setType( entity.getType() );
+        room.setPricePerNight( entity.getPricePerNight() );
+
         return room;
+    }
+
+    @Override
+    public Set<Room> toDomain(Set<RoomEntity> bookings) {
+        if ( bookings == null ) {
+            return null;
+        }
+
+        Set<Room> set = new LinkedHashSet<Room>( Math.max( (int) ( bookings.size() / .75f ) + 1, 16 ) );
+        for ( RoomEntity roomEntity : bookings ) {
+            set.add( toDomain( roomEntity ) );
+        }
+
+        return set;
+    }
+
+    @Override
+    public Set<RoomEntity> toEntity(Set<Room> bookings) {
+        if ( bookings == null ) {
+            return null;
+        }
+
+        Set<RoomEntity> set = new LinkedHashSet<RoomEntity>( Math.max( (int) ( bookings.size() / .75f ) + 1, 16 ) );
+        for ( Room room : bookings ) {
+            set.add( toEntity( room ) );
+        }
+
+        return set;
+    }
+
+    protected HotelEntity hotelToHotelEntity(Hotel hotel) {
+        if ( hotel == null ) {
+            return null;
+        }
+
+        HotelEntity hotelEntity = new HotelEntity();
+
+        hotelEntity.setId( hotel.getId() );
+        hotelEntity.setName( hotel.getName() );
+        hotelEntity.setAddress( hotel.getAddress() );
+        hotelEntity.setRooms( toEntity( hotel.getRooms() ) );
+
+        return hotelEntity;
+    }
+
+    protected Hotel hotelEntityToHotel(HotelEntity hotelEntity) {
+        if ( hotelEntity == null ) {
+            return null;
+        }
+
+        Hotel hotel = new Hotel();
+
+        hotel.setId( hotelEntity.getId() );
+        hotel.setName( hotelEntity.getName() );
+        hotel.setAddress( hotelEntity.getAddress() );
+        hotel.setRooms( toDomain( hotelEntity.getRooms() ) );
+
+        return hotel;
     }
 }

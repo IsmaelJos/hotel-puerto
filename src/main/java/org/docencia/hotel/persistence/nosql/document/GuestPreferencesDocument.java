@@ -31,8 +31,11 @@ public class GuestPreferencesDocument {
     public GuestPreferencesDocument() {
     }
 
-    public GuestPreferencesDocument(Long guestId, String preferredLanguage,
-                                    boolean newsLetterOptIn, List<String> tags, String favoriteRoomType, String notes) {
+    public GuestPreferencesDocument(
+            Long guestId, String preferredLanguage,
+            boolean newsLetterOptIn, List<String> tags,
+            String favoriteRoomType, String notes
+    ) {
 
         this.guestId = guestId;
         this.preferredLanguage = preferredLanguage;

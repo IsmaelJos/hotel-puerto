@@ -1,10 +1,9 @@
-package org.docencia.hotel.web.soap.impl;
+package org.docencia.hotel.web.soap;
 
 import org.docencia.hotel.domain.api.GuestDomain;
 import org.docencia.hotel.domain.model.Guest;
 import jakarta.jws.WebService;
 import org.docencia.hotel.domain.model.GuestPreferences;
-import org.docencia.hotel.web.soap.GuestSoapService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

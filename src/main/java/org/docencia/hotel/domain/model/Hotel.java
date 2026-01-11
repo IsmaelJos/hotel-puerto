@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Hotel {
-    // TODO: modelo de dominio (sin anotaciones de persistencia)
+
     private Long id;
 
     private String name;

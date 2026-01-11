@@ -27,15 +27,10 @@ public class RoomDomainImpl implements RoomDomain {
     }
 
     @Override
-    public Set<Room> findAll() {
-        return service.findAll();
-    }
+    public Set<Room> findAll() {return service.findAll();}
 
     @Override
-    public Room save(Room room) {
-        return service.save(room);
-
-    }
+    public Room save(Room room) {return service.save(room);}
 
     @Override
     public boolean deleteById(Long id) {

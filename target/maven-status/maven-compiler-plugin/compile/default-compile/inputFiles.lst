@@ -36,6 +36,15 @@
 /home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/service/impl/GuestServiceImpl.java
 /home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/service/impl/HotelServiceImpl.java
 /home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/service/impl/RoomServiceImpl.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/rest/BookingController.java
 /home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/rest/GuestController.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/rest/HotelController.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/rest/RoomController.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/BookingSoapService.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/BookingSoapServiceImpl.java
 /home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/GuestSoapService.java
 /home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/GuestSoapServiceImpl.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/HotelSoapService.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/HotelSoapServiceImpl.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/RoomSoapService.java
+/home/reonexar/hotel-puerto/src/main/java/org/docencia/hotel/web/soap/RoomSoapServiceImpl.java
